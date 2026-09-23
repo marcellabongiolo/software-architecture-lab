@@ -1,36 +1,100 @@
-<div align="center">
+# 🏛️ Software Architecture Lab
 
-# 🏛️ SOFTWARE ARCHITECTURE LAB 📐
+Um laboratório em Python para estudar **arquitetura de software**, com foco em separação de responsabilidades, injeção de dependências e arquitetura em camadas.
 
-<img src="https://img.shields.io/badge/FOCUS-CLEAN_ARCHITECTURE_%26_PATTERNS-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/LANGUAGE-PYTHON-yellow?style=for-the-badge&logo=python&logoColor=black" />
-<img src="https://img.shields.io/badge/STATUS-ACTIVE-success?style=for-the-badge" />
+> Projeto educacional: o repositório usa um banco de dados em memória para demonstrar conceitos arquiteturais sem depender de serviços externos.
 
-> *“Designing scalable, maintainable, and decoupled software systems.”*
+## 🎯 Objetivos
 
-</div>
+- entender separação de responsabilidades;
+- praticar arquitetura em camadas;
+- aplicar injeção de dependências;
+- manter regras de negócio independentes do armazenamento;
+- escrever testes automatizados;
+- documentar decisões e conceitos de arquitetura.
 
----
+## 🧩 Arquitetura demonstrada
 
-## 🔬 About This Repository
+O projeto possui três responsabilidades principais:
 
-Welcome to my **software-architecture-lab**! This repository explores how to structure software properly, separating business rules from database access and user interfaces. 
+1. **Repository** — acessa os dados dos usuários.
+2. **Service** — concentra a regra de negócio para verificar o status do usuário.
+3. **Presentation / Entry Point** — executa a aplicação e apresenta os resultados.
 
-### 📂 What You Will Find Here:
-* **Separation of Concerns:** Dividing code into distinct layers (Models, Services, Repositories).
-* **Design Patterns:** Reusable solutions to common software design problems.
-* **Maintainability:** Writing code that is easy to scale, test, and update.
+O `UsuarioService` recebe um `UsuarioRepository`, em vez de criar sua própria dependência. Isso demonstra uma forma simples de **injeção de dependência** e reduz o acoplamento entre as camadas.
 
----
+## ✨ Funcionalidades
 
-## 👩‍💻 Author
+- cadastro inicial de usuários em memória;
+- busca por ID;
+- identificação de usuário ativo ou inativo;
+- tratamento de usuário inexistente;
+- modelo de domínio com `dataclass`;
+- testes automatizados com `unittest`;
+- GitHub Actions para execução dos testes.
 
-<div align="center">
+## ▶️ Como executar
 
-**Marcella Bongiolo**  
-*Future Software Engineer | UNESC Student*
+Clone o repositório:
 
-[![GitHub Badge](https://img.shields.io/badge/GitHub-marcellabongiolo-181717?style=flat-square&logo=github)](https://github.com/marcellabongiolo)
-[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-marcellabongiolo-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/marcellabongiolo)
+```bash
+git clone https://github.com/marcellabongiolo/software-architecture-lab.git
+cd software-architecture-lab
+python camadas_sistema.py
+```
 
-</div>
+Execute os testes:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+O projeto não possui dependências externas.
+
+## 📁 Estrutura
+
+```text
+software-architecture-lab/
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── tests/
+│   └── test_camadas_sistema.py
+├── .gitignore
+├── LICENSE
+├── README.md
+└── camadas_sistema.py
+```
+
+## 🧠 Conceitos praticados
+
+- arquitetura em camadas;
+- Separation of Concerns;
+- Repository Pattern;
+- Service Layer;
+- injeção de dependências;
+- baixo acoplamento;
+- dataclasses;
+- type hints;
+- testes automatizados;
+- integração contínua.
+
+## 🚀 Próximos passos possíveis
+
+- separar as camadas em módulos e diretórios próprios;
+- criar uma interface/abstração para o repositório;
+- adicionar operações de criação, atualização e remoção;
+- substituir o armazenamento em memória por SQLite;
+- adicionar uma API HTTP;
+- explorar Clean Architecture e Ports and Adapters.
+
+## 👩‍💻 Autora
+
+**Marcella Bongiolo**
+
+- GitHub: https://github.com/marcellabongiolo
+- LinkedIn: https://linkedin.com/in/marcellabongiolo
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
